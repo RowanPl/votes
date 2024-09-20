@@ -35,6 +35,7 @@ public class VoteService {
         if (oVote.isPresent()){
             return voteFromModelToOutput(oVote.get());
         }
+
         else throw new RuntimeException("Username not found.");
     }
 
@@ -43,6 +44,7 @@ public class VoteService {
     public VoteOutputDto createVote (VoteInputDto voteInputDto, String username) {
         Optional<Vote> oVote = voteRepository.findVoteByUsername(username);
         if (oVote.isEmpty()) {
+            System.out.println("this is the vote");
             Vote vote = voteRepository.save(voteFromInputDtoToModel(voteInputDto, username));
             return voteFromModelToOutput(vote);
         }
