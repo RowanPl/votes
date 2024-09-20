@@ -25,7 +25,6 @@ public class VoteService {
     // GetAll
     public List<VoteOutputDto> getAllVotes() {
         List<Vote> voteList = voteRepository.findAll();
-        System.out.println("this is the votelist");
         return voteModelListToOutputList(voteList);
     }
 
@@ -44,7 +43,7 @@ public class VoteService {
     public VoteOutputDto createVote (VoteInputDto voteInputDto, String username) {
         Optional<Vote> oVote = voteRepository.findVoteByUsername(username);
         if (oVote.isEmpty()) {
-            System.out.println("this is the vote");
+
             Vote vote = voteRepository.save(voteFromInputDtoToModel(voteInputDto, username));
             return voteFromModelToOutput(vote);
         }
