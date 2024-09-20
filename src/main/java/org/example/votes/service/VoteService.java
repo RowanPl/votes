@@ -25,6 +25,7 @@ public class VoteService {
     // GetAll
     public List<VoteOutputDto> getAllVotes() {
         List<Vote> voteList = voteRepository.findAll();
+        System.out.println("this is the votelist");
         return voteModelListToOutputList(voteList);
     }
 
